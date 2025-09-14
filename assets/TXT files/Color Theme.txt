@@ -1,0 +1,7 @@
+--Primary-Accent-(Bold Blue): #005B96  - A classic, deep blue that is universally associated with stability, security, and professionalism.
+
+--Secondary-Accent-(Soft Slate): #C7D4E1  - A light, subtle gray-blue that can be used for secondary buttons, borders, or highlights.
+
+--Light-Background-(Light-White): #dbdbdbff  - A clean, crisp white that makes the content stand out.
+
+--Dark-charcol-(Almost Black): #1A1A1A  - A very dark black for maximum readability and contrast.

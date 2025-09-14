@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>User Profile | TMS</title>
+    <link rel="stylesheet" href="./CSS[Files]/style[login/signup].css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.0/css/all.min.css"
+      integrity="sha522-DxV+EoADOkOygM4IR9yXP8Sb2qwgidEmeqAEmDKIOfPRQZOWbXCzLC6vjbZyy0vPisbh4SyW27+ddLVCN+OMzQ=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet" />
+  </head>
+  <body>
+    <!-- TMS Header Start -->
+     <nav class="navigation-bar">
+      <div class="logo"></div>
+     </nav>
+    <!-- TMS Header End -->
+    <div class="container">
+      <div class="form-box login">
+        <form action="">
+
+          <img src="./assets/PNG[assets]/main_logo[trans].png" alt="demo">
+
+          <h1 class="secondary-heading col-1 mb-2">Login</h1>
+          <div class="input-box">
+            <i class="fa fa-user"></i>
+            <input type="text" placeholder="Username" required />
+          </div>
+          <div class="input-box">
+            <i class="fa fa-user"></i>
+            <input type="text" placeholder="User ID" required />
+          </div>
+          <div class="input-box">
+            <i class="fa fa-lock"></i>
+            <input type="password" placeholder="Password" required />
+            <!-- <i class="fa-solid fa-eye-slash"></i> -->
+            <!-- <i class="fa-solid fa-eye"></i> -->
+          </div>
+          <div class="forgot-link">
+            <a href="" class="para-3"
+              >Forgot password
+              <i class="fa-solid fa-circle-question col-1 mb-3"></i
+            ></a>
+          </div>
+          <button type="submit" class="button-2 form-btn">Login</button>
+        </form>
+      </div>
+      <div class="form-box register">
+        <form action="">
+          <h2 class="secondary-heading col-1 mb-2">Registeration</h2>
+          <div class="input-box-radio">
+            <div class="input_radio">
+              <input type="radio" name="Parent" id="Parent" />
+              <label for="Parent" class="col-1">Parent</label>
+            </div>
+            <div class="input_radio">
+              <input type="radio" name="driver" id="driver" />
+              <label for="driver" class="col-1">Bus Driver</label>
+            </div>
+            <div class="input_radio">
+              <input type="radio" name="admin" id="admin" />
+              <label for="admin" class="col-1">Campus Admin</label>
+            </div>
+          </div>
+          <div class="input-box">
+            <i class="fa fa-user"></i>
+            <input type="text" placeholder="Username" required />
+          </div>
+          <div class="input-box">
+            <i class="fa fa-envelope"></i>
+            <input type="email" placeholder="Email Address" required />
+          </div>
+          <div class="input-box">
+            <i class="fa fa-lock"></i>
+            <input type="password" placeholder="Password" required />
+            <!-- <i class="fa-solid fa-eye-slash"></i> -->
+            <!-- <i class="fa-solid fa-eye"></i> -->
+          </div>
+          <div class="forgot-link">
+            <a href="" class="para-3"
+              >Forgot password
+              <i class="fa-solid fa-circle-question col-1 mb-3"></i
+            ></a>
+          </div>
+          <button type="submit" class="button-2 form-btn">Register</button>
+        </form>
+      </div>
+      <div class="toggle-box">
+        <div class="toggle-panel toggle-left">
+          <h2 class="secondary-heading col-2 mb-2">Welcome!</h2>
+          <p class="para-1 mb-3">Don't Have an account ?</p>
+          <button type="button" class="button-3 register-btn form-btn">Demo</button>
+        </div>
+        <div class="toggle-panel toggle-right">
+          <h2 class="secondary-heading col-2 mb-2">Welcome Back!</h2>
+          <p class="para-1 mb-3">Already Have an account ?</p>
+          <button type="submit" class="button-3 login-btn">Login</button>
+        </div>
+      </div>
+    </div>
+<script src="./SCRIPT[files]/login.js"></script>
+  </body>
+</html>
