@@ -199,7 +199,6 @@ body {
 .search-bar .fa {
   position: absolute;
   left: 37rem;
-  top: 3.4rem;
   z-index: 5;
 }
 .header-side .search-bar input {
@@ -222,6 +221,13 @@ body {
 .profile-card .driver-profile {
   display: flex;
   align-items: center;
-  position: relative;
-  top: 2rem;
+  justify-content: center;
+}
+.profile-card .driver-profile img {
+    width: 50px;
+    height: 60px;
+    object-fit: cover;
+    border-radius: 10px;
+    border: 5px solid var(--color-creamy);
+    object-position: center;
 }
