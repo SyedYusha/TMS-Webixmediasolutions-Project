@@ -185,8 +185,8 @@ body {
   background-color: var(--Secondary-Accent);
   display: flex;
   align-items: center;
-  justify-content: space-evenly;
-  height: 10vh;
+  justify-content: center;
+  height: 13vh;
 }
 .dashboard-header .logo img {
   width: 20%;
@@ -199,11 +199,12 @@ body {
 .search-bar .fa {
   position: absolute;
   left: 37rem;
+  top: 4rem;
   z-index: 5;
 }
 .header-side .search-bar input {
   padding: 1.2rem 4.6rem;
-  width: 40%;
+  width: 35%;
   background-color: var(--Secondary-Accent);
   color: var(--Dark-Charcoal);
   border: var(--border-3rd);
@@ -215,20 +216,28 @@ body {
   top: 2rem;
 }
 
-.profile-card {
-  border: var(--border-3rd);
-}
 .profile-card .driver-profile {
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 180px;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  width: 180px;
+  height: 70px;
+  border-radius: 1rem;
+  background-color: var(--Pure-White);
+}
+.bell-icon{
+  background-color: var(--Pure-White);
+  margin: 1rem 2rem;
+  padding:0 1rem;
+  border-radius: 1.8rem;
+}
+.bell-icon .fa{
+  margin: 1rem 1rem 0;
 }
 .profile-card .driver-profile img {
-    width: 50px;
-    height: 60px;
-    object-fit: cover;
-    border-radius: 10px;
-    border: 5px solid var(--color-creamy);
-    object-position: center;
+  width: 50px;
+  height: 60px;
+  object-fit: cover;
+  border-radius: 10px;
+  object-position: center;
 }
