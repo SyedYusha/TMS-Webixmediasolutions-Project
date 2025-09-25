@@ -35,10 +35,16 @@
             </div>
             <div class="input-box mb-3">
               <i class="fa-solid fa-lock form-ico col-1"></i>
-              <input type="password" placeholder="Password" id="password" required />
+              <input
+                type="password"
+                placeholder="Password"
+                id="password"
+                required
+              />
             </div>
             <div class="btn-box mb-5">
-              <button type="submit" class="button-2" id="login-button" onclick="proceed()">Sign In</button>
+              <button
+                type="submit" class="button-2" id="login-button" onclick="proceed()">Sign In</button>
             </div>
             <div class="input-box">
               <a href="#" class="col-1">Forgot Password ?</a>
@@ -54,9 +60,13 @@
           <!-- <h2 class="secondary-heading">Hello World</h2> -->
           <div class="cards">
             <div class="cards-header">
-              <p class="para-3 card-header-list active" onclick="change_card()">Features</p>
+              <p class="para-3 card-header-list active" onclick="change_card()">
+                Features
+              </p>
               <p class="para-3 card-header-2" onclick="change_card_2()">Demo</p>
-              <p class="para-3 card-header-list-3" onclick="change_card_3()">TMS Updates</p>
+              <p class="para-3 card-header-list-3" onclick="change_card_3()">
+                TMS Updates
+              </p>
             </div>
             <div class="cards-content">
               <div class="cards-content-details">
@@ -109,17 +119,30 @@
               </div>
             </div>
           </div>
-
         </div>
       </div>
-          <img src="./assets/PNG[assets]/Main Logo[White BG] (4).png" alt="side-logo" class="side-logo" />
-        </div>
-        <div class="pop-up" id="pop-up">
+      <img
+        src="./assets/PNG[assets]/Main Logo[White BG] (4).png"
+        alt="side-logo"
+        class="side-logo"
+      />
+    </div>
+    <div class="pop-up" id="pop-up">
       <i class="fa-solid fa-square-check mb-2 col-1 main-heading"></i>
       <h3 class="thi-heading col-1 mb-2">Thank You</h3>
       <p class="mb-2 col-4">Sucessfully Sign In into your module</p>
-      <button type="button" class="button-2 mb-2" onclick="close_popup()">OK</button>
+      <button type="button" class="button-2 mb-2" onclick="proceed_panel()">
+        OK
+      </button>
     </div>
-<script src="./SCRIPT[files]/signin.js"></script>
+    <div class="pop-up" id="pop-up-invalid">
+      <i class="fa-solid fa-square-cross mb-2 col-1 main-heading"></i>
+      <h3 class="thi-heading col-1 mb-2">Error</h3>
+      <p class="mb-2 col-4">Invalid username/password</p>
+      <button class="button-2 mb-2" onclick="tryagain_popup()">
+        Try Again
+      </button>
+    </div>
+    <script src="./SCRIPT[files]/signin.js"></script>
   </body>
 </html>
