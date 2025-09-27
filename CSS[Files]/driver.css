@@ -159,16 +159,48 @@ label {
   border-radius: 0.8rem;
   font-weight: 500;
   border-radius: 0.8rem;
-  background: transparent;
-  border: var(--border-2nd);
-  color: var(--Pure-White);
-  transform: scale(1.05);
+  border: var(--border-3rd);
+  color: var(--Primary-Accent);
+  background-color: var(--Secondary-Accent);
+  /* transform: scale(1.05); */
   transition: all 0.5s ease;
   cursor: pointer;
 }
 .button-3:hover {
-  background-color: var(--Secondary-Accent);
+  transform: scale(1.05);
+}
+.button-4 {
+  padding: 1.2rem 1.8rem;
+  font-size: 1.8rem;
+  border-radius: 0.8rem;
+  font-weight: 500;
+  border-radius: 0.8rem;
+  background-color: var(--Primary-Accent);
+  border: none;
+  color: var(--Light-Gray);
+  transform: scale(1.05);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.637);
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+.button-4:hover {
+  box-shadow: 0 2px 8px rgba(255, 255, 255, 0.432);
+}
+.button-5 {
+  padding: 1.2rem 2rem;
+  font-size: 1.8rem;
+  border: none;
+  outline: none;
+  border-radius: 0.8rem;
+  font-weight: 500;
+  border-radius: 0.8rem;
+  background: transparent;
   color: var(--Primary-Accent);
+  transition: all 0.7s ease;
+  cursor: pointer;
+}
+.button-5:hover {
+  border: var(--border-3rd);
   transform: scale(1.05);
 }
 .ico-2 {
@@ -182,7 +214,7 @@ body {
   width: 100%;
 }
 .dashboard-header {
-  background-color: var(--Secondary-Accent);
+  background-color: var(--Pure-White);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -198,21 +230,21 @@ body {
 }
 .search-bar .fa {
   position: absolute;
-  left: 37rem;
+  left: 42rem;
   top: 4rem;
   z-index: 5;
 }
 .header-side .search-bar input {
   padding: 1.2rem 4.6rem;
   width: 35%;
-  background-color: var(--Secondary-Accent);
+  background-color: var(--Pure-White);
   color: var(--Dark-Charcoal);
   border: var(--border-3rd);
   font-size: 1.6rem;
   outline: none;
   border-radius: 1.8rem;
   position: absolute;
-  left: 35rem;
+  left: 40rem;
   top: 2rem;
 }
 
@@ -225,13 +257,38 @@ body {
   border-radius: 1rem;
   background-color: var(--Pure-White);
 }
-.bell-icon{
-  background-color: var(--Pure-White);
-  margin: 1rem 2rem;
-  padding:0 1rem;
-  border-radius: 1.8rem;
+.bar-icon {
+  /* background-color: var(--Secondary-Accent); */
+  margin: 1rem;
+  padding: 0 1rem;
+  border-radius: 0.8rem;
+  cursor: pointer;
 }
-.bell-icon .fa{
+.bar-icon i {
+  margin-top: 0.8rem;
+}
+.cross-icon {
+  background-color: var(--Pure-White);
+  margin: 1rem;
+  padding: 0 1rem;
+  border-radius: 0.8rem;
+  cursor: pointer;
+  width: 17%;
+  position: absolute;
+  right: 0;
+  z-index: 5;
+}
+.cross-icon i {
+  margin-top: 0.8rem;
+}
+.bell-icon {
+  background-color: var(--Pure-White);
+  border: var(--border-3rd);
+  /* border: var(--border-2nd); */
+  margin: 1rem 2rem;
+  border-radius: 0.8rem;
+}
+.bell-icon .fa {
   margin: 1rem 1rem 0;
 }
 .profile-card .driver-profile img {
@@ -240,4 +297,125 @@ body {
   object-fit: cover;
   border-radius: 10px;
   object-position: center;
+}
+
+/* //////Dashboard Sidebar////// */
+
+.dashboard-sidebar {
+  height: 100vh;
+  width: 20%;
+  background: var(--Dark-Charcoal);
+  position: absolute;
+  top: 0;
+  overflow: hidden;
+  transform: translateX(-100%);
+  z-index: 99;
+}
+.dashboard-sidebar.active {
+  transform: translateX(0);
+  transition: all 0.5s ease;
+}
+.dashboard-sidebar.unable {
+  transform: translateX(-100%);
+  transition: all 0.5s ease;
+}
+.dashboard-sidebar .sidebar-header img {
+  position: relative;
+  top: -50px;
+}
+.sidebar-body ul {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  position: relative;
+  top: -70px;
+}
+.sidebar-body ul li a .button {
+  color: var(--Pure-White);
+}
+
+.sidebar-body ul li a button {
+  width: 250px;
+  margin: 1rem 0;
+  padding: 1.2rem 1.5rem;
+  text-align: left;
+}
+
+.dashboard-main {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.dashboard-main-card {
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 5rem 0;
+}
+.dashboard-main .dashboard-cards{
+  margin: 0 2rem;
+}
+.driver-profile-card {
+  background-color: var(--Light-Gray);
+  box-shadow: var(--box-shadow);
+  border-radius: 0.8rem;
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+.driver-profile-card .profile-span {
+  position: relative;
+  right: 35%;
+  font-weight: 600;
+  margin: 1rem 0;
+}
+.driver-profile-card img {
+  width: 150px;
+  border: var(--border-2nd);
+  border-radius: 2.5rem;
+  object-fit: contain;
+  object-position: center;
+  margin: 1rem 0;
+}
+.driver-profile-card button {
+  padding: 0.8rem 1.8rem;
+  margin: 1rem 0;
+}
+
+.trips-card {
+  background-color: var(--Light-Gray);
+  box-shadow: var(--box-shadow);
+  border-radius: 0.8rem;
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  margin: 1rem 2rem;
+  padding: 1rem 0;
+}
+.chart-container {
+  width: 70%;
+  max-width: 800px;
+  background-color: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+.driver-hour-card {
+  background-color: var(--Light-Gray);
+  box-shadow: var(--box-shadow);
+  border-radius: 0.8rem;
+  width: 430px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  /* flex-direction: column; */
+  /* margin: 1rem 2rem; */
+  padding: 1rem 0;
 }

@@ -1,0 +1,24 @@
+/* Define the animation sequence */
+@keyframes zoomLoop {
+  0% {
+    transform: scale(1);    /* Start size (100%) */
+  }
+  50% {
+    transform: scale(1.1);  /* Peak zoom size (110%) */
+  }
+  100% {
+    transform: scale(1);    /* Return to start size (100%) */
+  }
+}
+
+/* Apply the animation to the image */
+.continuous-zoom {
+  width: 300px;
+  height: 200px;
+  /* Apply the animation: name, duration, timing, loop count */
+  animation: zoomLoop 5s ease-in-out infinite alternate;
+  
+  /* 5s = 5-second duration for one full cycle */
+  /* infinite = keeps repeating */
+  /* alternate = reverses direction each time (zooms in, then naturally zooms out) */
+}

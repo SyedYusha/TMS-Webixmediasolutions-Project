@@ -16,6 +16,9 @@
   <body>
     <div class="container">
       <div class="dashboard-header">
+        <div class="bar-icon" id="bar-icon" onclick="toggleSidebar()">
+          <i class="fa-solid fa-bars-staggered col-1 fou-heading"></i>
+        </div>
         <div class="logo">
           <img
             src="../assets/PNG[assets]/main_logo[trans].png"
@@ -33,7 +36,7 @@
             />
           </div>
           <div class="bell-icon">
-<i class="fa-solid fa-envelope col-4 fou-heading"></i>
+            <i class="fa-solid fa-envelope col-4 fou-heading"></i>
             <i class="fa fa-bell col-4 fou-heading"></i>
           </div>
 
@@ -55,15 +58,210 @@
         </div>
       </div>
       <div class="dashboard-body">
-        <div class="dashboard-sidebar"></div>
-        <div class="dashboard-main"></div>
+        <div class="dashboard-sidebar">
+          <div class="cross-icon" id="cross-icon" onclick="toggleSidebar()">
+            <i class="fa-solid fa-xmark col-1 fou-heading"></i>
+          </div>
+          <div class="sidebar-header">
+            <img
+              src="../assets/PNG[assets]/main_logo[trans-wh].png"
+              alt="main-logo"
+            />
+          </div>
+          <div class="sidebar-body">
+            <ul>
+              <li>
+                <a href="#"
+                  ><button class="button-4">
+                    <i class="fa-solid fa-chart-line col-3"></i>
+                    <span class="col-3">Dashboard</span>
+                  </button></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><button class="button-5">
+                    <i class="fa fa-user col-1"></i> Profile
+                  </button></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><button class="button-5">
+                    <i class="fa fa-clipboard-list col-1"></i> Trips
+                  </button></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><button class="button-5">
+                    <i class="fa fa-calendar-days col-1"></i> Schedule
+                  </button></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><button class="button-5">
+                    <i class="fa fa-bus col-1"></i> Vehicle
+                  </button></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><button class="button-5">
+                    <i class="fa fa-message col-1"></i> Messages
+                  </button></a
+                >
+              </li>
+              <li>
+                <a href="#"
+                  ><button class="button-5">
+                    <i class="fa fa-gear col-1"></i> Settings
+                  </button></a
+                >
+              </li>
+              <li>
+                <a href="../index.html"
+                  ><button class="button-5">
+                    <i class="fa fa-right-from-bracket col-1"></i> Logout
+                  </button></a
+                >
+              </li>
+            </ul>
+          </div>
+        </div>
+        <div class="dashboard-main">
+          <div class="dashboard-main-card">
+            <div class="driver-profile-card dashboard-cards">
+              <span class="col-1 profile-span"><i class="fa fa-user col-1"></i> Bio</span>
+              <!-- <div class="profile-img"> -->
+              <img src="../assets/JPG[assests]/Driver-1.webp" alt="driver-1" />
+              <!-- </div> -->
+              <p class="col-4">Rizwan Ali</p>
+              <p class="col-4">rizwan@tms</p>
+              <p class="col-4">+92 333 888</p>
+              <a href="#"><button class="button-3">Veiw Profile</button></a>
+            </div>
+            <div class="trips-card dashboard-cards">
+              <div>
+                <i class="fa-solid fa-route fou-heading col-1"></i>
+                <span class="fou-heading col-1">Total Trips</span>
+              </div>
+              <div>
+                <span class="col-4">+2.1</span> 
+                <span class="col-4"> this month</span>
+                <h2 class="secondary-heading col-4">
+                  84<span class="col-4">t</span>
+                </h2>
+              </div>
+              <canvas id="ridershipChart"></canvas>
+            </div>
+            <div class="trips-card dashboard-cards">
+              <div>
+                <i class="fa-regular fa-map fou-heading col-1"></i>
+                <span class="fou-heading col-1">Distance Driven</span>
+              </div>
+              <div>
+                <h2 class="secondary-heading col-4">
+                  131<span class="col-4">km</span>
+                </h2>
+              </div>
+                <div>
+                  <canvas id="myChart" width="250px" height="125px"></canvas>
+                </div>
+            </div>
+            <div class="driver-hour-card dashboard-cards">
+              <div>
+                <i class="fa-regular fa-clock fou-heading col-1"></i>
+                <span class="fou-heading col-1 mb-5">Driving Hours</span>
+              <!-- </div>
+              <div> -->
+                <h2 class="secondary-heading col-4">
+                  15<span class="col-4">hr</span> 20<span class="col-4">min</span>
+                </h2>
+              </div>
+                <div>
+                  <canvas id="driverHoursChart" width="200px" height="125px"></canvas>
+                </div>
+            </div>
+          </div>
+
+          <div class="dashboard-main-card">
+            <div class="students-data dashboard-cards">
+              <!-- <h4 class="fou-heading col-1">Students </h4> -->
+
+                  <div class="driver-hour-card dashboard-cards">
+              <div>
+                <i class="fa-regular fa-clock fou-heading col-1"></i>
+                <span class="fou-heading col-1 mb-5">Driving Hours</span>
+              <!-- </div>
+              <div> -->
+                <h2 class="secondary-heading col-4">
+                  15<span class="col-4">hr</span> 20<span class="col-4">min</span>
+                </h2>
+              </div>
+                <div>
+                  <canvas id="driverHoursChart" width="200px" height="125px"></canvas>
+                </div>
+            </div>
+            </div>
+          </div>
+
+        </div>
       </div>
     </div>
+    <script src="../SCRIPT[files]/driver.js"></script>
     <script
       src="https://cdnjs.cloudflare.com/ajax/libs/boxicons/2.1.4/dist/boxicons.js"
       integrity="sha512-kWH92pHUC/rcjpSMu19lT+H6TlZwZCAftg9AuSw+AVYSdEKSlXXB8o6g12mg5f+Pj5xO40A7ju2ot/VdodCthw=="
       crossorigin="anonymous"
       referrerpolicy="no-referrer"
     ></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script>
+       const ctx = document.getElementById('myChart');
+
+  new Chart(ctx, {
+    type: 'line',
+    data: {
+      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
+      datasets: [{
+        label: 'Distance Driven (km)',
+        data: [12, 19, 15, 18, 16, 10],
+        backgroundColor: [
+            "rgba(0, 91, 150, 0.8)",
+            "rgba(255, 99, 132, 0.8)",
+            "rgba(255, 159, 64, 0.8)",
+            
+          ],
+          borderColor: [
+            "rgba(0, 91, 150, 0.8)",
+            "rgba(255, 99, 132, 0.8)",
+            "rgba(255, 159, 64, 0.8)",
+          ],
+          // hoverOffset: 4
+          borderWidth:1,
+      }]
+    },
+    options: {
+      responsive: true,
+      animations: {
+      tension: {
+        duration: 1000,
+        easing: 'linear',
+        from: 1,
+        to: 0,
+        loop: true
+      }
+    },
+      scales: {
+        y: {
+          beginAtZero: true,
+          suggestedMax: 30,
+        }
+      }
+    }
+  });
+    </script>
   </body>
 </html>
