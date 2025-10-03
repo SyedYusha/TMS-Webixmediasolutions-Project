@@ -39,8 +39,16 @@ h4 {
 .col-4 {
   color: var(--Dark-Charcoal);
 }
+.col-5 {
+  color: #1c8613;
+  font-weight: 600;
+}
+.col-6 {
+  color: rgb(221, 21, 21);
+  font-weight: 600;
+}
 .main-heading {
-  font-size: 7rem;
+  font-size: 5.5rem;
   font-weight: 800;
   text-align: center;
   margin-bottom: 1rem;
@@ -231,7 +239,7 @@ body {
 .search-bar .fa {
   position: absolute;
   left: 42rem;
-  top: 4rem;
+  top: 3.5rem;
   z-index: 5;
 }
 .header-side .search-bar input {
@@ -283,10 +291,9 @@ body {
 }
 .bell-icon {
   background-color: var(--Pure-White);
-  border: var(--border-3rd);
   /* border: var(--border-2nd); */
   margin: 1rem 2rem;
-  border-radius: 0.8rem;
+
 }
 .bell-icon .fa {
   margin: 1rem 1rem 0;
@@ -305,7 +312,7 @@ body {
   height: 100vh;
   width: 20%;
   background: var(--Dark-Charcoal);
-  position: absolute;
+  position: fixed;
   top: 0;
   overflow: hidden;
   transform: translateX(-100%);
@@ -347,6 +354,7 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  flex-direction: column;
 }
 .dashboard-main-card {
   display: flex;
@@ -354,7 +362,7 @@ body {
   justify-content: space-evenly;
   margin: 5rem 0;
 }
-.dashboard-main .dashboard-cards{
+.dashboard-main .dashboard-cards {
   margin: 0 2rem;
 }
 .driver-profile-card {
@@ -386,6 +394,34 @@ body {
   padding: 0.8rem 1.8rem;
   margin: 1rem 0;
 }
+
+.driver-profile-more{
+  display: none;
+  align-items: start;
+  justify-content: center;
+  flex-direction: column;
+  background-color: var(--Pure-White);
+  box-shadow: var(--box-shadow);
+  border-radius: 0.8rem;
+  position: absolute;
+  top: 10rem;
+  right: 1rem;
+  z-index: 999;
+  
+  transition: all 0.7s ease;  
+}
+.driver-profile-more a {
+  color: var(--Primary-Accent);
+  padding: 0.5rem 1rem;
+  transition: all 0.5s ease;
+}
+.driver-profile-more a:hover {
+  background-color: var(--Secondary-Accent);
+  border-radius: 0.8rem;
+  width: 100%;
+  height: 100%;
+}
+
 
 .trips-card {
   background-color: var(--Light-Gray);
@@ -419,3 +455,96 @@ body {
   /* margin: 1rem 2rem; */
   padding: 1rem 0;
 }
+.student-attendance {
+  background-color: var(--Light-Gray);
+  box-shadow: var(--box-shadow);
+  border-radius: 0.8rem;
+  width: 450px;
+}
+.student-attendance div:first-child {
+  padding: 1rem;
+}
+.student-attendance table {
+  width: 100%;
+  font-size: 6rem;
+  text-align: center;
+  padding: 1rem 0;
+}
+.student-attendance table th {
+  color: var(--Primary-Accent);
+  font-weight: 600;
+  padding-bottom: 1rem;
+}
+.student-attendance table td {
+  padding: 1rem 0;
+}
+.student-attendance {
+  text-align: center;
+}
+
+.student-attendance button {
+  padding: 0.5rem 1rem;
+  margin: 1rem;
+  font-size: 1.8rem;
+  border-radius: 0.8rem;
+  font-weight: 500;
+  border-radius: 0.8rem;
+  border: var(--border-3rd);
+  color: var(--Primary-Accent);
+  background-color: var(--Secondary-Accent);
+  /* transform: scale(1.05); */
+  transition: all 0.5s ease;
+  cursor: pointer;
+}
+.student-attendance-header{
+  display: flex;
+  align-items: center;justify-content: space-between;
+  margin: 2rem;
+}
+.attendance-cards{
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+  margin: 2rem;
+}
+  .attendance-cards .attedance-card-details{
+    background-color: var(--Pure-White);
+    padding: 2rem;
+    border-radius: .8rem;
+  }
+  .attendance-cards .attedance-card-details:nth-child(1)  .thi-heading{
+    color: var(--Primary-Accent);
+  }
+  .attendance-cards .attedance-card-details:nth-child(2)  .thi-heading{
+    color: #1c8613;
+  }
+  .attendance-cards .attedance-card-details:nth-child(3)  .thi-heading{
+    color: red;
+  }
+  .attendance-cards .attedance-card-details .thi-heading,.fou-heading{
+      text-align: left;
+      font-weight: 600;
+    }
+
+
+.student-attendance-data table {
+  width: 90%;
+  background-color: var(--Pure-White);
+    font-size: 7rem;
+    text-align: left;
+    padding: 1rem 2rem;
+    margin: 0 10rem;
+    border-radius: .8rem;
+  }
+  .student-attendance-data table th {
+  background-color: var(--Light-Gray);
+  color: var(--Primary-Accent);
+  font-weight: 600;   
+   padding: 1rem 2rem;
+border-radius: .8rem;
+
+}
+.student-attendance-data table td {
+   padding: 1rem 2rem;
+    
+}    
