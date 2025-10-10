@@ -137,7 +137,47 @@
             </ul>
           </div>
         </div>
+         <div class="student-registration-form">
+          <h4 class="fou-heading col-4">Add New Student</h4>
+          <i class="fa fa-xmark col-1" onclick="closeForm()"></i>
+          <form action="">
+            <div>
+              <label class="col-4" for="studname">Student Name</label><br>
+              <input type="text" name="studname" id="studname" placeholder="Enter Name" required>
+            </div>
+            <div>
+              <label class="col-4" for="grade">Grade</label><br>
+              <select name="grade" id="grade" required>
+              <option value="Select Grade">Select Grade </option>
+              <option value="Grade-I">Grade-I</option>
+              <option value="Grade-II">Grade-II</option>
+              <option value="Grade-III">Grade-III</option>
+              <option value="Grade-IV">Grade-IV</option>
+              <option value="Grade-V">Grade-V</option>
+              <option value="Grade-VI">Grade-VI</option>
+              <option value="Grade-VII">Grade-VII</option>
+              <option value="Grade-VIII">Grade-VIII</option>
+              </select>
+            </div>
+            <div>
+              <label class="col-4" for="p.name">Parent/Guardian Name</label><br>
+              <input type="text" name="p.name" id="p.name" placeholder="Select Grade" required>
+            </div>
+            <div>
+              <label class="col-4" for="p.num">Phone Number</label><br>
+              <input type="number" name="p.num" id="p.num" placeholder="Enter Phone Number" required>
+            </div>
+            <div>
+              <label class="col-4" for="Address">Address</label><br>
+              <textarea id="Address" rows="3" placeholder="Student's home address" required=""></textarea>
 
+            </div>
+            <div class="form-btn">
+              <button class="button-2" onclick="studentAdded()" type="submit">Submit</button>
+              <button class="button-3" onclick="closeForm()" type="reset">Cancel</button>
+            </div>
+          </form>
+        </div>
         <div class="main-student-attendance">
           <div class="student-attendance-header">
             <h4 class="fou-heading col-4">Student Management</h4>
@@ -211,31 +251,7 @@
                   </tbody>
                 </table>
         </div>
-        <div class="student-registration-form">
-          <form action="">
-            <h4 class="fou-heading col-4">Add New Student</h4>
-            <div>
-              <h5 class="col-4" id="studname">Student Name</h5>
-              <input type="text" name="studname" id="studname" placeholder="Enter Name">
-            </div>
-            <div>
-              <h5 class="col-4" id="grade">Grade</h5>
-              <input type="text" name="grade" id="grade" placeholder="Select Grade">
-            </div>
-            <div>
-              <h5 class="col-4" id="p.name">Parent/Guardian Name</h5>
-              <input type="text" name="p.name" id="p.name" placeholder="Select Grade">
-            </div>
-            <div>
-              <h5 class="col-4" id="p.num">Phone Number</h5>
-              <input type="tel" name="p.num" id="p.num" placeholder="Enter Phone Number">
-            </div>
-            <div>
-              <h5 class="col-4" id="Address">Address</h5>
-              <input type="text" name="Address" id="Address" placeholder="Enter Address">
-            </div>
-          </form>
-        </div>
+       
       </div>
       </div>
     <script src="../SCRIPT[files]/driver.js"></script>

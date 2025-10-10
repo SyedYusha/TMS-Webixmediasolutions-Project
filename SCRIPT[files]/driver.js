@@ -164,3 +164,14 @@ function studentData() {
         // Do nothing if the user cancels
       }
     }
+  function studentAdd(){
+    let addStudent = document.querySelector(".student-registration-form");
+  addStudent.classList.add("addStudent");
+  addStudent.classList.remove("closeForm");
+  
+  }
+  function closeForm(){
+    let addStudent = document.querySelector(".student-registration-form");
+    addStudent.classList.add("closeForm");
+    addStudent.classList.remove("addStudent");
+  }
