@@ -152,10 +152,15 @@ function studentData() {
         }
       }
   function enableLiveTracking() {
+    let animateBus = document.querySelector(".vehicle-image")
+    let eLT = document.querySelector(".eLT")
     confirm("⚠️ Are you sure you want to enable live tracking?");
     if (true) {
       alert("✅ Live tracking has been enabled.");
+      animateBus.classList.toggle("continuous-zoom");
+      eLT.innerHTML = `<a href="#" class="eLT" onclick="disableLiveTracking()"><i class="fa-solid fa-location-crosshairs col-1"></i> Disable Live Tracking</a>`
     }
+    
   }
   function logOut() {
     if (confirm("🚪	 Are you sure you want to logout?")) {
@@ -175,3 +180,95 @@ function studentData() {
     addStudent.classList.add("closeForm");
     addStudent.classList.remove("addStudent");
   }
+ const tripData = [
+            { id: 1, route: "School Hub → Morning Route 1", time: "6:45 AM", duration: "1 hr 15 min", students: 42, status: "Completed", icon: "fa-check", color: "var(--color-secondary)" },
+            { id: 2, route: "School Hub → Afternoon Route 2", time: "2:45 PM", duration: "1 hr 20 min", students: 45, status: "En Route", icon: "fa-truck-moving", color: "var(--color-info)" },
+            { id: 3, route: "School Hub → Field Trip (Zoo)", time: "8:00 AM (Tomorrow)", duration: "4 hrs 00 min", students: 30, status: "Planned", icon: "fa-hourglass-start", color: "var(--color-warning)" },
+            { id: 4, route: "School Hub → Late Run", time: "4:30 PM", duration: "1 hr 10 min", students: 25, status: "Cancelled", icon: "fa-xmark", color: "var(--color-danger)" },
+        ];
+
+        const scheduleList = document.getElementById('scheduleList');
+        const filterBar = document.getElementById('filterBar');
+
+        /**
+         * Renders the trip items based on the provided filtered list.
+         * @param {Array<Object>} trips - Array of trip objects to render.
+         */
+        function renderTrips(trips) {
+            scheduleList.innerHTML = ''; // Clear existing list
+            
+            trips.forEach(trip => {
+                const tripElement = document.createElement('div');
+                tripElement.className = 'trip-item';
+                tripElement.setAttribute('data-status', trip.status);
+                // Set the dynamic border color
+                tripElement.style.borderLeftColor = trip.color;
+                
+                // Construct the inner HTML for the trip card
+                tripElement.innerHTML = `
+                    <div class="trip-details">
+                        <div class="main-info">
+                            <div class="route-info">
+                                <i class="fa-solid fa-location-dot"></i>
+                                <p class="col-1">${trip.route}</p>
+                            </div>
+                            <div class="status-badge status-${trip.status.toLowerCase().replace(' ', '')}">
+                                <i class="fa-solid ${trip.icon} col-2"></i> <p class="col-2">${trip.status}</p>
+                            </div>
+                        </div>
+                        <div class="time-details">
+                            <span class="col-1"><i class="col-1 fa-solid fa-clock"></i> Start Time: ${trip.time}</span>
+                            <span class="col-1"><i class="col-1 fa-solid fa-road"></i> Duration: ${trip.duration}</span>
+                            <span class="col-1"><i class="col-1 fa-solid fa-bus-simple"></i> Students: ${trip.students}</span>
+                        </div>
+                    </div>
+                `;
+                
+                scheduleList.appendChild(tripElement);
+            });
+        }
+
+        /**
+         * Filters the trips list based on the selected status.
+         * @param {string} filterStatus - The status to filter by ('all', 'Completed', etc.).
+         */
+        function filterTrips(filterStatus) {
+            // Remove 'active' class from all buttons
+            Array.from(filterBar.children).forEach(button => {
+                button.classList.remove('active');
+            });
+
+            // Find and add 'active' class to the clicked button
+            const activeButton = filterBar.querySelector(`[data-filter="${filterStatus}"]`);
+            if (activeButton) {
+                activeButton.classList.add('active');
+            }
+
+            const items = scheduleList.querySelectorAll('.trip-item');
+            
+            items.forEach(item => {
+                const itemStatus = item.getAttribute('data-status');
+                
+                // Use a quick CSS transition for filtering
+                if (filterStatus === 'all' || itemStatus === filterStatus) {
+                    item.classList.remove('hidden');
+                } else {
+                    item.classList.add('hidden');
+                }
+            });
+        }
+
+        // --- EVENT LISTENERS ---
+        document.addEventListener('DOMContentLoaded', () => {
+            // 1. Initial render of all trips
+            renderTrips(tripData);
+            
+            // 2. Add filtering event listener to the filter bar
+            filterBar.addEventListener('click', (event) => {
+                const target = event.target;
+                if (target.classList.contains('filter-button')) {
+                    const filterValue = target.getAttribute('data-filter');
+                    filterTrips(filterValue);
+                }
+            });
+        });

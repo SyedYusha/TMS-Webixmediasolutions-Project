@@ -1,0 +1,144 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Messaging Panel | Transport Management System</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <link rel="stylesheet" href="../CSS[Files]/MsgPnl.css">
+</head>
+<body>
+    
+    <div class="messaging-container">
+        <div class="sidebar active">
+            <div class="sidebar-header">
+                <h2>Messages</h2>
+                <i class="fa-solid fa-pen-to-square"></i>
+            </div>
+            <div class="search-box">
+                <i class="fa-solid fa-magnifying-glass"></i>
+                <input type="text" placeholder="Search contacts...">
+            </div>
+            <div class="contacts-list">
+                <div class="contact-item active">
+                    <div class="contact-avatar">JD</div>
+                    <div class="contact-info">
+                        <div class="contact-name">John Driver</div>
+                        <div class="contact-preview">Thanks for the update!</div>
+                    </div>
+                    <div class="contact-meta">
+                        <div class="contact-time">10:30 AM</div>
+                        <div class="unread-badge">2</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-avatar">SP</div>
+                    <div class="contact-info">
+                        <div class="contact-name">Sarah Parent</div>
+                        <div class="contact-preview">What time is pickup?</div>
+                    </div>
+                    <div class="contact-meta">
+                        <div class="contact-time">Yesterday</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-avatar">MA</div>
+                    <div class="contact-info">
+                        <div class="contact-name">Mike Admin</div>
+                        <div class="contact-preview">Route updated successfully</div>
+                    </div>
+                    <div class="contact-meta">
+                        <div class="contact-time">2 days ago</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-avatar">LJ</div>
+                    <div class="contact-info">
+                        <div class="contact-name">Lisa Johnson</div>
+                        <div class="contact-preview">Perfect, see you tomorrow</div>
+                    </div>
+                    <div class="contact-meta">
+                        <div class="contact-time">3 days ago</div>
+                    </div>
+                </div>
+                <div class="contact-item">
+                    <div class="contact-avatar">TB</div>
+                    <div class="contact-info">
+                        <div class="contact-name">Tom Brown</div>
+                        <div class="contact-preview">Thanks for confirming</div>
+                    </div>
+                    <div class="contact-meta">
+                        <div class="contact-time">1 week ago</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="chat-container active">
+            <div class="chat-header">
+                <div class="chat-user-info">
+                    <div class="chat-avatar">JD</div>
+                    <div class="chat-user-details">
+                        <h3>John Driver</h3>
+                        <div class="chat-user-status">Active now</div>
+                    </div>
+                </div>
+                <div class="chat-actions">
+                    <i class="fa-solid fa-phone"></i>
+                    <i class="fa-solid fa-video"></i>
+                    <i class="fa-solid fa-ellipsis-vertical"></i>
+                </div>
+            </div>
+
+            <div class="chat-messages" id="chatMessages">
+                <div class="message received">
+                    <div class="message-content">
+                        <div class="message-bubble">Hi! I wanted to update you about today's route schedule.</div>
+                        <div class="message-time">9:45 AM</div>
+                    </div>
+                </div>
+                <div class="message sent">
+                    <div class="message-content">
+                        <div class="message-bubble">Sure, please go ahead.</div>
+                        <div class="message-time">9:46 AM</div>
+                    </div>
+                </div>
+                <div class="message received">
+                    <div class="message-content">
+                        <div class="message-bubble">I'll be arriving at stop 3 approximately 5 minutes earlier today due to lighter traffic.</div>
+                        <div class="message-time">9:48 AM</div>
+                    </div>
+                </div>
+                <div class="message sent">
+                    <div class="message-content">
+                        <div class="message-bubble">Perfect! I'll notify the parents. Thanks for keeping us informed.</div>
+                        <div class="message-time">9:50 AM</div>
+                    </div>
+                </div>
+                <div class="message received">
+                    <div class="message-content">
+                        <div class="message-bubble">Thanks for the update!</div>
+                        <div class="message-time">10:30 AM</div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="chat-input-container">
+                <div class="chat-input-wrapper">
+                    <div class="input-actions">
+                        <i class="fa-solid fa-paperclip"></i>
+                        <i class="fa-solid fa-face-smile"></i>
+                    </div>
+                    <input type="text" placeholder="Type a message..." id="messageInput">
+                    <button class="send-btn" onclick="sendMessage()">
+                        <i class="fa-solid fa-paper-plane"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="../SCRIPT[files]/MsgPnl.js"></script>
+</body>
+</html>

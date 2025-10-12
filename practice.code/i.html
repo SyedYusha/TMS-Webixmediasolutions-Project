@@ -1,0 +1,357 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Maintenance Dashboard</title>
+    <!-- Load Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    
+    <style>
+        /* === Color Variables and Base Styles (Consistent with Schedule) === */
+        :root {
+            --color-primary: #005B96;    /* Dark Blue */
+            --color-secondary: #70AE6E;  /* Green (Success) */
+            --color-warning: #FFC107;    /* Yellow/Orange (Planned) */
+            --color-danger: #DC3545;     /* Red (Cancelled) */
+            --color-info: #17A2B8;       /* Light Blue (En Route) */
+            --color-text-dark: #333;
+            --color-background: #f4f4ff;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: var(--color-background);
+            color: var(--color-text-dark);
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 20px auto;
+            padding: 0 15px;
+        }
+
+        /* === Header === */
+        .header {
+            background-color: var(--color-primary);
+            color: white;
+            padding: 15px 0;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .header h1 {
+            margin: 0;
+            font-size: 1.8em;
+            font-weight: bold;
+        }
+
+        /* === Vehicle Card (Top Section) === */
+        .vehicle-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 15px;
+            border-left: 8px solid var(--color-primary);
+        }
+
+        .vehicle-id {
+            display: flex;
+            align-items: center;
+        }
+
+        .vehicle-id i {
+            font-size: 2.5em;
+            color: var(--color-primary);
+            margin-right: 15px;
+        }
+
+        .vehicle-id h2 {
+            margin: 0;
+            font-size: 1.6em;
+            font-weight: bold;
+        }
+
+        .vehicle-status {
+            font-size: 1.1em;
+            font-weight: 600;
+            padding: 8px 15px;
+            border-radius: 20px;
+            text-transform: uppercase;
+        }
+
+        .status-ready {
+            background-color: var(--color-secondary);
+            color: white;
+        }
+        
+        /* === Main Content Grid (KPIs and Alerts) === */
+        .main-grid {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+        }
+
+        .kpi-section {
+            flex: 2; /* Takes up 60% of space on desktop */
+            min-width: 300px;
+        }
+
+        .alert-section {
+            flex: 1; /* Takes up 40% of space on desktop */
+            min-width: 300px;
+        }
+
+        /* === KPI Card Styling === */
+        .kpi-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+        }
+
+        .kpi-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            border-top: 5px solid var(--color-primary);
+        }
+
+        .kpi-card-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 10px;
+        }
+
+        .kpi-card-header i {
+            font-size: 1.5em;
+            color: var(--color-primary);
+            margin-right: 10px;
+        }
+
+        .kpi-card h3 {
+            margin: 0;
+            font-size: 1em;
+            font-weight: 600;
+            color: #666;
+        }
+
+        .kpi-value {
+            font-size: 2em;
+            font-weight: bold;
+            color: var(--color-text-dark);
+            margin-top: 5px;
+        }
+        
+        .kpi-value small {
+            font-size: 0.6em;
+            font-weight: normal;
+            color: #999;
+        }
+
+        /* === Alerts/Compliance Card Styling === */
+        .alert-card {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .alert-card h2 {
+            font-size: 1.4em;
+            color: var(--color-primary);
+            border-bottom: 2px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 0;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+
+        .alert-card h2 i {
+            margin-right: 10px;
+        }
+
+        .alert-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px dashed #f0f0f0;
+            font-size: 0.95em;
+        }
+
+        .alert-item:last-child {
+            border-bottom: none;
+        }
+
+        .alert-icon {
+            font-size: 1.2em;
+            margin-right: 10px;
+        }
+
+        .alert-text {
+            flex-grow: 1;
+        }
+
+        .alert-item-status {
+            font-weight: bold;
+        }
+        
+        .status-ok { color: var(--color-secondary); }
+        .status-due { color: var(--color-warning); }
+        .status-overdue { color: var(--color-danger); }
+
+        /* === Mobile Adjustments === */
+        @media (max-width: 768px) {
+            .vehicle-card {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            .main-grid {
+                flex-direction: column;
+            }
+
+            .kpi-section, .alert-section {
+                min-width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <i class="fa-solid fa-gauge" style="margin-right: 10px;"></i>
+        <h1>Vehicle Operations Dashboard</h1>
+    </div>
+
+    <div class="container">
+        
+        <!-- 1. VEHICLE IDENTIFICATION CARD -->
+        <div class="vehicle-card">
+            <div class="vehicle-id">
+                <i class="fa-solid fa-bus"></i>
+                <div>
+                    <h2>BUS ID: 007</h2>
+                    <p style="margin: 0; color: #666;">License Plate: AZ-458-TRD</p>
+                </div>
+            </div>
+            <div class="vehicle-status status-ready">
+                <i class="fa-solid fa-circle-check"></i> OPERATIONAL
+            </div>
+        </div>
+
+        <!-- 2. MAIN CONTENT GRID (KPIs and Alerts) -->
+        <div class="main-grid">
+            
+            <!-- KPI SECTION -->
+            <div class="kpi-section">
+                <h2 style="font-size: 1.4em; color: var(--color-primary); margin-bottom: 15px;">Key Vitals & Performance</h2>
+                <div class="kpi-grid">
+                    
+                    <!-- KPI 1: Fuel Level -->
+                    <div class="kpi-card" style="border-top-color: var(--color-info);">
+                        <div class="kpi-card-header">
+                            <i class="fa-solid fa-gas-pump" style="color: var(--color-info);"></i>
+                            <h3>Fuel Level</h3>
+                        </div>
+                        <div class="kpi-value">78<small>%</small></div>
+                        <p style="margin: 0; font-size: 0.85em; color: #999;">~ 250 miles range</p>
+                    </div>
+
+                    <!-- KPI 2: Total Odometer -->
+                    <div class="kpi-card" style="border-top-color: var(--color-primary);">
+                        <div class="kpi-card-header">
+                            <i class="fa-solid fa-road" style="color: var(--color-primary);"></i>
+                            <h3>Total Mileage</h3>
+                        </div>
+                        <div class="kpi-value">124,567<small> mi</small></div>
+                        <p style="margin: 0; font-size: 0.85em; color: #999;">Lifetime driven</p>
+                    </div>
+
+                    <!-- KPI 3: Tire Pressure -->
+                    <div class="kpi-card" style="border-top-color: var(--color-secondary);">
+                        <div class="kpi-card-header">
+                            <i class="fa-solid fa-tire" style="color: var(--color-secondary);"></i>
+                            <h3>Tire Pressure</h3>
+                        </div>
+                        <div class="kpi-value">OK</div>
+                        <p style="margin: 0; font-size: 0.85em; color: #999;">All tires within spec</p>
+                    </div>
+
+                    <!-- KPI 4: Engine Temperature -->
+                    <div class="kpi-card" style="border-top-color: var(--color-warning);">
+                        <div class="kpi-card-header">
+                            <i class="fa-solid fa-temperature-three-quarters" style="color: var(--color-warning);"></i>
+                            <h3>Engine Temp</h3>
+                        </div>
+                        <div class="kpi-value">195<small>°F</small></div>
+                        <p style="margin: 0; font-size: 0.85em; color: #999;">Normal operating range</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ALERTS AND COMPLIANCE SECTION -->
+            <div class="alert-section">
+                
+                <!-- Compliance Card -->
+                <div class="alert-card">
+                    <h2><i class="fa-solid fa-list-check"></i> Compliance Checklist</h2>
+                    
+                    <!-- Item 1: State Inspection -->
+                    <div class="alert-item">
+                        <span class="alert-icon status-ok"><i class="fa-solid fa-circle-check"></i></span>
+                        <span class="alert-text">Annual State Inspection</span>
+                        <span class="alert-item-status status-ok">Due: 12/2025</span>
+                    </div>
+
+                    <!-- Item 2: Oil Change -->
+                    <div class="alert-item">
+                        <span class="alert-icon status-due"><i class="fa-solid fa-triangle-exclamation"></i></span>
+                        <span class="alert-text">Oil Change Service</span>
+                        <span class="alert-item-status status-due">Due: 10/30/2025</span>
+                    </div>
+
+                    <!-- Item 3: Brake Check -->
+                    <div class="alert-item">
+                        <span class="alert-icon status-ok"><i class="fa-solid fa-circle-check"></i></span>
+                        <span class="alert-text">Brake System Check</span>
+                        <span class="alert-item-status status-ok">Due: 02/2026</span>
+                    </div>
+
+                    <!-- Item 4: Tire Rotation -->
+                    <div class="alert-item">
+                        <span class="alert-icon status-overdue"><i class="fa-solid fa-xmark"></i></span>
+                        <span class="alert-text">Tire Rotation & Balance</span>
+                        <span class="alert-item-status status-overdue">OVERDUE</span>
+                    </div>
+                </div>
+
+                <!-- Driver Notes/Pre-Trip Card -->
+                <div class="alert-card">
+                    <h2><i class="fa-solid fa-clipboard-question"></i> Driver Action</h2>
+                    <p style="font-size: 0.9em; margin-bottom: 10px;">Pre-Trip Inspection Required before 6:00 AM.</p>
+                    <button style="display: block; width: 100%; padding: 10px; background-color: var(--color-primary); color: white; border: none; border-radius: 5px; font-weight: bold; cursor: pointer; transition: background-color 0.2s;">
+                        <i class="fa-solid fa-file-signature"></i> START PRE-TRIP CHECK
+                    </button>
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</body>
+</html>

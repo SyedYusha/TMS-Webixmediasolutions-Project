@@ -50,23 +50,37 @@
                 <span class="col-4">Rizwan Ali</span>
                 <p class="col-4">
                   Driver
-                  <i class="fa-solid fa-circle-chevron-down col-4" onclick="driProfile()"></i>
+                  <i
+                    class="fa-solid fa-circle-chevron-down col-4"
+                    onclick="driProfile()"
+                  ></i>
                 </p>
               </div>
               <div class="driver-profile-more" id="driverProfileMore">
-                 <a href="#"><i class="fa-solid fa-user col-1"></i> My Profile</a>
-                 <a href="#"><i class="fa-solid fa-comment-dots col-1"></i> Messages</a>
-                 <a href="#"><i class="fa-solid fa-gear col-1"></i> Account Settings</a>
-                 <a href="#" onclick="enableLiveTracking()"><i class="fa-solid fa-location-crosshairs col-1"></i> Enable Live Tracking</a>
-                 <a href="#" onclick="logOut()"><i class="fa-solid fa-right-from-bracket col-1"></i> Logout</a>
-               </div>
-              
+                <a href="#"
+                  ><i class="fa-solid fa-user col-1"></i> My Profile</a
+                >
+                <a href="#"
+                  ><i class="fa-solid fa-comment-dots col-1"></i> Messages</a
+                >
+                <a href="#"
+                  ><i class="fa-solid fa-gear col-1"></i> Account Settings</a
+                >
+                <a href="#" class="eLT" onclick="enableLiveTracking()"
+                  ><i class="fa-solid fa-location-crosshairs col-1"></i> Enable
+                  Live Tracking</a
+                >
+                <a href="#" onclick="logOut()"
+                  ><i class="fa-solid fa-right-from-bracket col-1"></i>
+                  Logout</a
+                >
+              </div>
             </div>
           </div>
         </div>
       </div>
       <div class="dashboard-body">
-        <div class="dashboard-sidebar">         
+        <div class="dashboard-sidebar">
           <div class="cross-icon" id="cross-icon" onclick="toggleSidebar()">
             <i class="fa-solid fa-xmark col-1 fou-heading"></i>
           </div>
@@ -131,7 +145,11 @@
               <li>
                 <a href="../index.html"
                   ><button class="button-5">
-                    <i class="fa fa-right-from-bracket col-1" onclick="logConfirm()"></i> Logout
+                    <i
+                      class="fa fa-right-from-bracket col-1"
+                      onclick="logConfirm()"
+                    ></i>
+                    Logout
                   </button></a
                 >
               </li>
@@ -141,7 +159,9 @@
         <div class="dashboard-main">
           <div class="dashboard-main-card">
             <div class="driver-profile-card dashboard-cards">
-              <span class="col-1 profile-span"><i class="fa fa-user col-1"></i> Bio</span>
+              <span class="col-1 profile-span"
+                ><i class="fa fa-user col-1"></i> Bio</span
+              >
               <!-- <div class="profile-img"> -->
               <img src="../assets/JPG[assests]/Driver-1.webp" alt="driver-1" />
               <!-- </div> -->
@@ -156,7 +176,7 @@
                 <span class="fou-heading col-1">Total Trips</span>
               </div>
               <div>
-                <span class="col-4">+2.1</span> 
+                <span class="col-4">+2.1</span>
                 <span class="col-4"> this month</span>
                 <h2 class="secondary-heading col-4">
                   84<span class="col-4">t</span>
@@ -174,38 +194,41 @@
                   131<span class="col-4">km</span>
                 </h2>
               </div>
-                <div>
-                  <canvas id="myChart" width="250px" height="125px"></canvas>
-                </div>
+              <div>
+                <canvas id="myChart" width="250px" height="125px"></canvas>
+              </div>
             </div>
             <div class="driver-hour-card dashboard-cards">
               <div>
                 <i class="fa-regular fa-clock fou-heading col-1"></i>
                 <span class="fou-heading col-1 mb-5">Driving Hours</span>
-              <!-- </div>
+                <!-- </div>
               <div> -->
                 <h2 class="secondary-heading col-4">
-                  15<span class="col-4">hr</span> 20<span class="col-4">min</span>
+                  15<span class="col-4">hr</span> 20<span class="col-4"
+                    >min</span
+                  >
                 </h2>
               </div>
-                <div>
-                  <canvas id="driverHoursChart" width="200px" height="125px"></canvas>
-                </div>
+              <div>
+                <canvas
+                  id="driverHoursChart"
+                  width="200px"
+                  height="125px"
+                ></canvas>
+              </div>
             </div>
           </div>
 
           <div class="dashboard-main-card">
-            <div class="students-data dashboard-cards">
-              <!-- <h4 class="fou-heading col-1">Students </h4> -->
-
-                  <div class="student-attendance dashboard-cards">
+            <div class="student-attendance dashboard-cards">
               <div>
                 <i class="fa fa-user fou-heading col-1"></i>
                 <span class="fou-heading col-1 mb-5">Student Attendance</span>
               </div>
               <div>
-                <table >
-                  <thead >
+                <table>
+                  <thead>
                     <th>Student ID</th>
                     <th>Student Name</th>
                     <th>Class</th>
@@ -248,16 +271,142 @@
                       <td class="col-5">Present</td>
                       <td>First</td>
                     </tr>
-                      
                   </tbody>
                 </table>
               </div>
-              <a href="#"><button class="button-3" onclick="studentData()">Veiw More</button></a>
-
+              <a href="#"
+                ><button class="button-3" onclick="studentData()">
+                  Veiw More
+                </button></a
+              >
             </div>
+
+            <div class="live-tracking">
+              <div>
+                <i
+                  class="fa-solid fa-location-crosshairs fou-heading col-1"
+                ></i>
+                <span class="fou-heading col-1 mb-5">Live Tracking</span>
+              </div>
+              <div class="mapouter">
+                <div class="gmap_canvas">
+                  <iframe
+                    width="100%"
+                    height="40  0"
+                    id="gmap_canvas"
+                    src="https://maps.google.com/maps?q=lahore&t=&z=13&ie=UTF8&iwloc=&output=embed"
+                    frameborder="0"
+                    scrolling="no"
+                    marginheight="0"
+                    marginwidth="0"
+                  ></iframe
+                  ><a href="https://123movies-to.org"></a><br />
+                  <style>
+                    .mapouter {
+                      position: relative;
+                      text-align: right;
+                      height: 250px;
+                      width: 100%;
+                    }
+                  </style>
+                  <a href="https://www.embedgooglemap.net"></a>
+                  <style>
+                    .gmap_canvas {
+                      overflow: hidden;
+                      background: none !important;
+                      height: 250px;
+                      width: 100%;
+                    }
+                  </style>
+                </div>
+              </div>
             </div>
           </div>
+          <div class="dashboard-main-card">
+            <div class="schedule-driver">
+              <div class="filter-bar" id="filterBar">
+                <button class="button-5 filter-button active" data-filter="all">
+                  All Trips
+                </button>
+                <button class="button-5 filter-button" data-filter="En Route">
+                  En Route
+                </button>
+                <button class="button-5 filter-button" data-filter="Planned">
+                  Planned
+                </button>
+                <button class="button-5 filter-button" data-filter="Completed">
+                  Completed
+                </button>
+                <button class="button-5 filter-button" data-filter="Cancelled">
+                  Cancelled
+                </button>
+              </div>
 
+              <div class="schedule-list" id="scheduleList">
+                <!-- Trip items will be rendered here by JavaScript -->
+              </div>
+            </div>
+            <div class="vehicle-details-card">
+              <i
+                class="fa-solid fa-up-right-from-square expand-icon"
+                title="View Full Vehicle Details"
+              ></i>
+              <div class="image-column">
+                <!-- Placeholder image URL for a clean bus -->
+                  <img src="../assets/WEBP[assets]/bus-1.webp" alt="Image to zoom" class="vehicle-image">
+              </div>
+              <!-- Text Details Column -->
+              <div class="details-text-column">
+                <h2>Current Vehicle: BUS ID 007</h2>
+
+                <!-- Detail 1: Fuel Type -->
+                <div class="detail-item">
+                  <i class="fa-solid fa-gas-pump"></i>
+                  <div class="detail-label">8 km/liter efficiency</div>
+                </div>
+                <p
+                  style="margin: -10px 0 0 35px; font-size: 1.2rem; color: #888"
+                >
+                  Fuel Type: Diesel
+                </p>
+
+                <!-- Detail 2: Length -->
+                <div class="detail-item">
+                  <i class="fa-solid fa-ruler-horizontal"></i>
+                  <div class="detail-label">12.5 meters</div>
+                </div>
+                <p
+                  style="margin: -10px 0 0 35px; font-size: 1.2rem; color: #888"
+                >
+                  Length
+                </p>
+
+                <!-- Detail 3: License Plate -->
+                <div class="detail-item">
+                  <i class="fa-solid fa-shield-halved"></i>
+                  <div class="detail-label">AZ-458-TRD</div>
+                </div>
+                <p
+                  style="margin: -10px 0 0 35px; font-size: 1.2rem; color: #888"
+                >
+                  License Plate
+                </p>
+
+                <!-- Detail 4: Service Due Date -->
+                <div class="detail-item">
+                  <i class="fa-solid fa-wrench"></i>
+                  <div class="detail-label">09/15/2025</div>
+                </div>
+                <p
+                  style="margin: -10px 0 0 35px; font-size: 1.2rem; color: #888"
+                >
+                  Service Due
+                </p>
+              </div>
+
+              <!-- Image Column -->
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -270,50 +419,50 @@
     ></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <script>
-       const ctx = document.getElementById('myChart');
+      const ctx = document.getElementById("myChart");
 
-  new Chart(ctx, {
-    type: 'line',
-    data: {
-      labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-      datasets: [{
-        label: 'Distance Driven (km)',
-        data: [12, 19, 15, 18, 16, 10],
-        backgroundColor: [
-            "rgba(0, 91, 150, 0.8)",
-            "rgba(255, 99, 132, 0.8)",
-            "rgba(255, 159, 64, 0.8)",
-            
+      new Chart(ctx, {
+        type: "line",
+        data: {
+          labels: ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+          datasets: [
+            {
+              label: "Distance Driven (km)",
+              data: [12, 19, 15, 18, 16, 10],
+              backgroundColor: [
+                "rgba(0, 91, 150, 0.8)",
+                "rgba(255, 99, 132, 0.8)",
+                "rgba(255, 159, 64, 0.8)",
+              ],
+              borderColor: [
+                "rgba(0, 91, 150, 0.8)",
+                "rgba(255, 99, 132, 0.8)",
+                "rgba(255, 159, 64, 0.8)",
+              ],
+              // hoverOffset: 4
+              borderWidth: 1,
+            },
           ],
-          borderColor: [
-            "rgba(0, 91, 150, 0.8)",
-            "rgba(255, 99, 132, 0.8)",
-            "rgba(255, 159, 64, 0.8)",
-          ],
-          // hoverOffset: 4
-          borderWidth:1,
-      }]
-    },
-    options: {
-      responsive: true,
-      animations: {
-      tension: {
-        duration: 1000,
-        easing: 'linear',
-        from: 1,
-        to: 0,
-        loop: true
-      }
-    },
-      scales: {
-        y: {
-          beginAtZero: true,
-          suggestedMax: 30,
-        }
-      }
-    }
-  });
-     
+        },
+        options: {
+          responsive: true,
+          animations: {
+            tension: {
+              duration: 1000,
+              easing: "linear",
+              from: 1,
+              to: 0,
+              loop: true,
+            },
+          },
+          scales: {
+            y: {
+              beginAtZero: true,
+              suggestedMax: 30,
+            },
+          },
+        },
+      });
     </script>
   </body>
 </html>

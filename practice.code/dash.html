@@ -1,0 +1,290 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Driver Dashboard — STMS (Demo)</title>
+  <style>
+    :root{--bg:#0f1724;--card:#0b1220;--muted:#9aa4b2;--accent:#2b8cff;--glass:rgba(255,255,255,0.03)}
+    *{box-sizing:border-box;font-family:Inter,ui-sans-serif,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial}
+    body{margin:0;background:linear-gradient(180deg,#071028 0%, #071627 100%);color:#e6eef8}
+    .container{max-width:1200px;margin:28px auto;padding:20px}
+    header{display:flex;align-items:center;justify-content:space-between;margin-bottom:18px}
+    h1{font-size:20px;margin:0}
+    .top-actions{display:flex;gap:10px;align-items:center}
+    .btn{background:var(--accent);border:none;padding:8px 12px;border-radius:8px;color:#fff;cursor:pointer}
+    .grid{display:grid;grid-template-columns:300px 1fr;gap:18px}
+
+    /* Left column */
+    .card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:16px;border-radius:12px;box-shadow:0 6px 18px rgba(2,6,23,0.6)}
+    .profile{display:flex;gap:12px;align-items:center}
+    .avatar{width:68px;height:68px;border-radius:12px;background:linear-gradient(135deg,#2b8cff,#6fd3ff);display:flex;align-items:center;justify-content:center;font-weight:700}
+    .muted{color:var(--muted);font-size:13px}
+    .section{margin-top:14px}
+    .stat-row{display:flex;justify-content:space-between;gap:8px}
+    .stat{flex:1;background:var(--glass);padding:10px;border-radius:8px;text-align:center}
+    .small{font-size:12px}
+
+    /* Right column */
+    .dashboard-top{display:flex;gap:12px;margin-bottom:12px}
+    .stats{display:flex;gap:12px;flex:1}
+    .stat-card{flex:1;padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));}
+
+    .map{height:260px;border-radius:10px;background:linear-gradient(180deg,#061222,#052033);display:flex;align-items:center;justify-content:center;color:var(--muted);}
+    .controls{display:flex;gap:8px;margin-top:8px}
+
+    table{width:100%;border-collapse:collapse;margin-top:10px}
+    th,td{padding:8px;text-align:left;border-bottom:1px dashed rgba(255,255,255,0.03);font-size:13px}
+    th{color:var(--muted);font-weight:600}
+
+    .students-list{max-height:260px;overflow:auto}
+    .pickup-btn{background:#1a8c2f;padding:6px 8px;border-radius:8px;color:#fff;border:none;cursor:pointer}
+    .dropped{opacity:0.6;text-decoration:line-through}
+
+    footer{margin-top:18px;text-align:center;color:var(--muted);font-size:13px}
+
+    /* responsive */
+    @media (max-width:900px){.grid{grid-template-columns:1fr}.dashboard-top{flex-direction:column}.map{height:200px}}
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div>
+        <h1>Driver Dashboard — STMS (Demo)</h1>
+        <div class="muted">Live demo showing HTML/CSS/JS implementation for driver features</div>
+      </div>
+      <div class="top-actions">
+        <button class="btn" id="startTripBtn">Start Trip</button>
+        <button class="btn" id="endTripBtn" style="background:#ff5c5c">End Trip</button>
+      </div>
+    </header>
+
+    <div class="grid">
+      <aside>
+        <div class="card">
+          <div class="profile">
+            <div class="avatar" id="driverInitial">YS</div>
+            <div>
+              <div style="font-weight:700">Syed Yusha B. S. Ali</div>
+              <div class="muted small">Driver ID: D-1023 • Active</div>
+              <div class="muted small">License: ABC-123456 • Expires: 2026-08-21</div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="small muted">Vehicle Assigned</div>
+            <div style="font-weight:700;margin-top:6px">Bus 05 — REG: LHR-990</div>
+            <div class="muted small">Capacity: 32 seats • Next Service: 2025-11-01</div>
+          </div>
+
+          <div class="section">
+            <div class="small muted">Route</div>
+            <div style="font-weight:700;margin-top:6px">Route A12 • 14 stops</div>
+            <div class="muted small">Est. Distance: 18.5 km • Est. Time: 45 min</div>
+          </div>
+
+          <div class="section">
+            <div class="small muted">Statistics</div>
+            <div class="stat-row" style="margin-top:8px">
+              <div class="stat">
+                <div style="font-weight:700">Trips</div>
+                <div class="muted small">Today: <span id="tripsToday">1</span></div>
+              </div>
+              <div class="stat">
+                <div style="font-weight:700">On Time</div>
+                <div class="muted small" id="onTimePct">100%</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section">
+            <div class="small muted">Notifications</div>
+            <ul id="notifications" style="margin:8px 0;padding-left:18px;color:var(--muted)">
+              <li>Vehicle service due in 21 days</li>
+              <li>License renewal reminder</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <div style="font-weight:700">Quick Actions</div>
+          <div class="controls">
+            <button class="btn" id="msgAdmin">Message Admin</button>
+            <button class="btn" id="reportIssue" style="background:#ff9f00">Report Issue</button>
+          </div>
+        </div>
+      </aside>
+
+      <main>
+        <div class="dashboard-top">
+          <div class="stats">
+            <div class="stat-card">
+              <div class="small muted">Trips Today</div>
+              <div style="font-weight:700;font-size:18px" id="statTrips">1</div>
+            </div>
+            <div class="stat-card">
+              <div class="small muted">Students Onboard</div>
+              <div style="font-weight:700;font-size:18px" id="statOnboard">0</div>
+            </div>
+            <div class="stat-card">
+              <div class="small muted">Current Speed</div>
+              <div style="font-weight:700;font-size:18px" id="statSpeed">0 km/h</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div style="font-weight:700">Live Route Map</div>
+            <div class="muted small">Route A12 — Bus 05</div>
+          </div>
+          <div class="map" id="mapPlaceholder">Map placeholder (integrate Google/Leaflet here)</div>
+          <div class="controls">
+            <button class="btn" id="centerMap">Center Bus</button>
+            <button class="btn" id="toggleTracking">Toggle Tracking</button>
+            <div style="flex:1"></div>
+            <div class="muted small">GPS: <span id="gpsStatus">Connected</span></div>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div style="font-weight:700">Student Pickup List</div>
+            <div class="muted small">Route A12 • Morning</div>
+          </div>
+
+          <div class="students-list">
+            <table id="studentsTable">
+              <thead>
+                <tr><th>Student</th><th>Stop</th><th>Time</th><th>Status</th></tr>
+              </thead>
+              <tbody>
+                <!-- rows injected by JS -->
+              </tbody>
+            </table>
+          </div>
+
+          <div style="display:flex;gap:8px;margin-top:10px">
+            <input id="searchStudent" placeholder="Search student or stop" style="flex:1;padding:8px;border-radius:8px;border:none;background:rgba(255,255,255,0.02);color:#e6eef8" />
+            <button class="btn" id="markAll">Mark All Picked</button>
+          </div>
+        </div>
+
+        <div class="card" style="margin-top:12px">
+          <div style="font-weight:700">Trip Log</div>
+          <div class="muted small" id="tripLog" style="margin-top:8px;max-height:120px;overflow:auto;padding-right:6px">No trips yet.</div>
+        </div>
+
+        <footer>Demo dashboard — replace placeholders with real API endpoints & map integration for production</footer>
+      </main>
+    </div>
+  </div>
+
+  <script>
+    // Sample data
+    const students = [
+      {id:1,name:'Ayesha Khan',stop:'Stop 1',time:'07:15',status:'waiting'},
+      {id:2,name:'Hassan Ali',stop:'Stop 2',time:'07:20',status:'waiting'},
+      {id:3,name:'Zainab R.',stop:'Stop 3',time:'07:27',status:'waiting'},
+      {id:4,name:'Bilal S.',stop:'Stop 4',time:'07:33',status:'waiting'}
+    ];
+
+    const tbody = document.querySelector('#studentsTable tbody');
+    const statOnboard = document.getElementById('statOnboard');
+    const tripsToday = document.getElementById('tripsToday');
+    const tripLog = document.getElementById('tripLog');
+    const statSpeed = document.getElementById('statSpeed');
+
+    function renderStudents(list){
+      tbody.innerHTML = '';
+      list.forEach(s=>{
+        const tr = document.createElement('tr');
+        tr.innerHTML = `<td class="${s.status==='dropped'?'dropped':''}">${s.name}</td><td>${s.stop}</td><td>${s.time}</td><td><button class=\"pickup-btn\" data-id=\"${s.id}\">${s.status==='picked'?'Picked':'Pick'}</button></td>`;
+        tbody.appendChild(tr);
+      });
+      updateOnboardCount();
+    }
+
+    function updateOnboardCount(){
+      const onboard = students.filter(s=>s.status==='picked').length;
+      statOnboard.textContent = onboard;
+      document.getElementById('statTrips').textContent = tripsToday.textContent;
+    }
+
+    renderStudents(students);
+
+    // Delegated click for pickup buttons
+    tbody.addEventListener('click',e=>{
+      if(e.target.matches('.pickup-btn')){
+        const id = Number(e.target.dataset.id);
+        const s = students.find(x=>x.id===id);
+        if(s.status==='waiting' || s.status==='picked'){ s.status = (s.status==='picked' ? 'waiting': 'picked'); }
+        e.target.textContent = s.status==='picked' ? 'Picked' : 'Pick';
+        if(s.status==='picked'){ e.target.parentElement.parentElement.querySelector('td').classList.remove('dropped'); }
+        updateOnboardCount();
+        logEvent(`${s.name} ${s.status==='picked' ? 'picked up' : 'set to waiting'}`);
+      }
+    });
+
+    // Start/End Trip
+    document.getElementById('startTripBtn').addEventListener('click',()=>{
+      logEvent('Trip started at '+ new Date().toLocaleTimeString());
+      tripsToday.textContent = Number(tripsToday.textContent)+1;
+      document.getElementById('tripLog').scrollTop = document.getElementById('tripLog').scrollHeight;
+      simulateSpeed();
+    });
+    document.getElementById('endTripBtn').addEventListener('click',()=>{
+      logEvent('Trip ended at '+ new Date().toLocaleTimeString());
+      stopSpeedSimulation();
+    });
+
+    function logEvent(txt){
+      const p = document.createElement('div');
+      p.textContent = `• ${txt}`;
+      tripLog.prepend(p);
+    }
+
+    // Search
+    document.getElementById('searchStudent').addEventListener('input',e=>{
+      const q = e.target.value.toLowerCase();
+      renderStudents(students.filter(s=>s.name.toLowerCase().includes(q) || s.stop.toLowerCase().includes(q)));
+    });
+
+    document.getElementById('markAll').addEventListener('click',()=>{
+      students.forEach(s=> s.status='picked');
+      renderStudents(students);
+      logEvent('All students marked as picked');
+    });
+
+    // Fake GPS / speed simulation
+    let speedTimer = null;
+    function simulateSpeed(){
+      if(speedTimer) return;
+      speedTimer = setInterval(()=>{
+        const sp = Math.floor(Math.random()*50)+10; // 10-60 km/h
+        statSpeed.textContent = sp+ ' km/h';
+      },1500);
+    }
+    function stopSpeedSimulation(){
+      clearInterval(speedTimer); speedTimer = null; statSpeed.textContent = '0 km/h';
+    }
+
+    // Buttons
+    document.getElementById('msgAdmin').addEventListener('click',()=>alert('Message to admin: (demo)'));
+    document.getElementById('reportIssue').addEventListener('click',()=>{
+      const issue = prompt('Describe the issue');
+      if(issue){logEvent('Issue reported: '+issue); alert('Issue reported to admin (demo)');}
+    });
+
+    // small UI nicety: toggle tracking
+    let tracking = true;
+    document.getElementById('toggleTracking').addEventListener('click',()=>{
+      tracking = !tracking; document.getElementById('gpsStatus').textContent = tracking? 'Connected':'Disconnected';
+    });
+
+    // initial log
+    logEvent('Dashboard loaded');
+  </script>
+</body>
+</html>
